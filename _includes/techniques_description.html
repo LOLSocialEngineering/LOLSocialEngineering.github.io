@@ -1,0 +1,6 @@
+<dl>
+    {% for technique in site.lolSocialEngineering %}
+    <dt class="function-name">{{ technique.Name }}</dt>
+    <dd>{{ technique.Description | markdownify }}</dd>
+    {% endfor %}
+</dl>

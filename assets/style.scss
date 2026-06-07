@@ -1,0 +1,542 @@
+---
+---
+$accent: #2fc0f0;
+$bg-dark: #212840;
+$lighter: lighten($accent, 40%);
+$darker: mix($accent, $bg-dark, 20%);
+$hover: #0d89b3;
+
+// layout
+
+$column-width: 800px;
+$grace-space: 200px;
+$layout-break: "(min-width: #{$column-width + $grace-space})";
+
+@media #{$layout-break} {
+    body {
+        width: $column-width;
+        margin: 40px auto;
+    }
+
+    p {
+        text-align: justify;
+    }
+}
+
+@media not all and #{$layout-break} {
+    .github-corner {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .header-box {
+        flex-direction: column;
+    }
+
+    #bin-table th:nth-child(3), #bin-table td:nth-child(3),
+    #bin-table th:nth-child(4), #bin-table td:nth-child(4){
+        display:none;
+    }
+
+    ol:has(> :nth-child(2)) {
+        padding-left: 1em !important;
+    }
+
+    .properties .row {
+        flex-wrap: wrap;
+
+        .property {
+            min-width: unset;
+            width: unset;
+        }
+    }
+
+    h2.function-name {
+        margin-top: 1em !important;
+        padding-top: 1em;
+        border-top: 1px dotted black;
+    }
+}
+
+// common tags
+
+body {
+    font-family: sans, sans-serif;
+    word-break: break-word;
+    background: #fff4f4;
+}
+
+code {
+    padding: 0.15em 0.25em;
+    border-radius: 0.25em;
+    color: $accent;
+    background: $lighter;
+
+    .path {
+        color: #777;
+        border-bottom: 1px dashed $accent;
+    }
+}
+
+pre {
+    background: $lighter;
+    padding: 1em;
+    overflow-x: auto;
+    white-space: pre-wrap;
+
+    code {
+        padding: 0;
+        border-radius: 0;
+    }
+}
+
+a:link, a:visited {
+    color: $accent;
+}
+
+a:hover {
+    color: $hover;
+}
+
+// permalink on headings
+
+h2, h3, h4, h5 {
+    .permalink {
+        margin-left: 5px;
+        text-decoration: none;
+        visibility: hidden;
+
+        &::before {
+            content: "#";
+        }
+    }
+
+    &:target {
+        border-left: 5px solid $accent;
+        padding-left: 5px;
+    }
+
+    &:hover {
+        .permalink {
+            visibility: visible;
+        }
+    }
+}
+
+h3 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+// binary list and search
+
+#bin-search {
+    margin-top: 50px;
+    padding: 0.5em;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+#bin-table {
+    width: 100%;
+
+    th, td {
+        padding: 0.1em 0.5em;
+        overflow-wrap: anywhere;
+    }
+
+    th {
+        text-align: left;
+    }
+
+    tbody tr:hover {
+        background: $lighter;
+    }
+
+    #search-message {
+        display: none;
+        text-align: center;
+        padding: 1em;
+    }
+}
+
+// function description
+
+.function-list {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    gap: 1px 3px;
+    div {
+        flex-basis: 1;
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        border: 1px solid $accent;
+
+        a:link, a:visited {
+            color: $accent;
+            text-decoration: none;
+        }
+
+        &:hover, a:hover {
+            color: $hover;
+            border-color: $hover;
+        }
+    }
+}
+
+.attack-technique-list {
+    font-size: x-small;
+}
+
+// bin examples
+
+.examples {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+
+    li {
+        display: table-row;
+
+        &:not(:only-child):before {
+            display: table-cell;
+            font-size: 0.8rem;
+            font-weight: bold;
+            width: 3em;
+            text-align: center;
+            //counter-increment: item;
+            //content: "(" counter(item, lower-alpha) ")";
+        }
+    }
+}
+
+// other classes
+
+.logo {
+    margin-right: 10px;
+}
+
+.bin-name {
+    font-family: Consolas, monospace;
+    font-size: 1.2rem;
+}
+
+.function-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.attack-technique-id {
+    font-weight: bold;
+}
+
+.github-buttons {
+    display: inline-block;
+    margin-left: 10px;
+
+    // avoid displaying the link text during loading
+    a.github-button {
+        visibility: hidden;
+    }
+}
+
+.header-box {
+    display: flex;
+}
+
+ul {
+    margin: 0;
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.external-favicon {
+    width: 16px;
+    vertical-align: middle;
+    font-size: 0;
+    display: inline-flex;
+}
+
+#contributors {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: flex-start;
+    gap: 1px 5px;
+    min-height: 50px;
+}
+
+#contributors>div {
+    padding: 3px;
+    border: 1px solid $accent;
+    border-radius: 2px;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+}
+
+.tags dd {
+    display: flex;
+    gap: 1px 5px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: $accent;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 85%;
+    padding: 5px;
+    position: relative;
+}
+
+.properties {
+    display: flex;
+    flex-direction: column;
+}
+
+.properties .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.properties .property {
+    font-weight: bold;
+    min-width: 175px;
+    width: 175px;
+    box-sizing: border-box;
+}
+
+.properties .property::after {
+    content: ':\00a0';
+    white-space: pre;
+}
+
+ol+h2.function-name {
+    margin-top: 2em;
+}
+
+ol {
+    padding: 0;
+}
+
+ol li+li {
+    margin-top: 1em;
+}
+
+ol li:only-child {
+    list-style: none
+}
+
+dl.row>dd {
+    margin: 0;
+}
+dd>p {
+    margin: 0;
+}
+
+dl { /* Required for Chrome, default in Firefox */
+    margin: 0;
+}
+
+section + section {
+    margin-top: 1em;
+}
+
+
+$xy-border: (
+  top: t,
+  bottom: b,
+  left: l,
+  right: r
+);
+
+
+[data-tooltip] {
+    $triangle: .3rem;
+    $background-color: rgba(51,51,51,.9);
+
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+
+    &::after {
+      background-color: $background-color;
+      border-radius: $triangle;
+      color: #fff;
+      content: attr(data-tooltip);
+      font-size: 1rem;
+      font-size: 100%;
+      font-weight: normal;
+      line-height: 1.15rem;
+      opacity: 0;
+      padding: .25rem .5rem;
+      position: absolute;
+      text-align: left;
+      text-transform: none;
+      transition: opacity .2s;
+      visibility: hidden;
+      z-index: 1;
+      white-space: break-spaces;
+      max-width: 300px;
+      width: 300px;
+    }
+
+    @each $direction, $d in $xy-border {
+      &.tooltip-#{$direction} {
+        // arrows
+        &::before {
+          border-style: solid;
+          border-width: $triangle;
+          content: "";
+          opacity: 0;
+          position: absolute;
+          transition: opacity .2s;
+          visibility: hidden;
+          @if $direction == top {
+            border-color: $background-color transparent transparent transparent;
+            top: -20%;
+            left: 50%;
+            margin-left: -$triangle;
+          } @else
+          if $direction == bottom {
+            border-color: transparent transparent $background-color transparent;
+            bottom: 0;
+            left: 50%;
+            margin-left: -$triangle;
+          } @else
+          if $direction == left {
+            border-color: transparent transparent transparent $background-color;
+            top: $triangle;
+            right: calc(110% - #{$triangle});
+            margin-top: -$triangle;
+          } @else
+          if $direction == right {
+            border-color: transparent $background-color transparent transparent;
+            top: 50%;
+            top: $triangle;
+            left: calc(110% - #{$triangle});
+            margin-top: -$triangle;
+          }
+        }
+
+        &::after {
+          @if $direction == top {
+            bottom: 120%;
+            left: 50%;
+            transform: translate(-50%);
+          } @else
+          if $direction == bottom {
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%);
+          } @else
+          if $direction == left {
+            top: -$triangle;
+            right: calc(110% + #{$triangle});
+          } @else
+          if $direction == right {
+            top: -$triangle;
+            left: calc(110% + #{$triangle});
+          }
+        }
+      }
+    }
+
+    &.tooltip-mobile {
+      @media (max-width: 767px) {
+        &::before {
+          display: none;
+        }
+
+        &:after {
+          font-size: 1rem;
+          max-width: 20rem;
+          position: fixed;
+          bottom: 1%;
+          left: 50%;
+          text-align: left;
+          transform: translate(-50%);
+          white-space: break-spaces;
+        }
+      }
+    }
+
+    &:hover::after,
+    &[class*=tooltip-]:hover::before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+        background: $bg-dark;
+        color: white;
+    }
+
+    input {
+        color: white;
+        background: lighten($bg-dark, 10%);
+        border: 1px solid lighten($bg-dark, 40%);
+    }
+
+    input::placeholder {
+         color: lighten($bg-dark, 40%);
+    }
+
+    code,
+    pre {
+        background: $darker;
+        color: inherit;
+    }
+
+    #bin-table tbody tr:hover {
+        background: $darker;
+    }
+
+    .tag {
+        background-color: $darker;
+    }
+
+    .github-corner svg {
+        fill: #585858!important;
+    }
+
+    code .path {
+        color: lighten($accent, 10%);
+        border-bottom: 1px dashed #ccc;
+    }
+
+    img.logo {
+        filter: drop-shadow(0 0 3px rgb(255, 255, 255));
+    }
+
+    .function-list  div {
+        border: 1px solid $darker;
+        background-color: lighten($bg-dark, 2%);
+
+        a:link,
+        a:visited {
+            color: $accent;
+        }
+
+        &:hover,
+        a:hover {
+            color: $hover;
+            border-color: $hover;
+        }
+    }
+}

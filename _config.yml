@@ -1,0 +1,17 @@
+---
+title: LOLSocialEngineering
+
+exclude: ['/Gemfile', '/Makefile', '/README.md', '/NOTICE.md', 'LICENSE']
+
+permalink: pretty
+
+collections:
+  lolSocialEngineering:
+    output: true
+
+defaults:
+  - scope:
+      path: '_lolSocialEngineering'
+    values:
+      layout: 'technique'
+---

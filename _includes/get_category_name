@@ -1,0 +1,5 @@
+{% if include.bin and include.bin.Techniques and include.bin.Techniques.size > 0 %}
+    {{ include.bin.Techniques[0].Category }}
+{% else %}
+    {% assign fn_parts = include.path | split: '/' %}{% assign fn_parts_size = fn_parts | size %}{{- fn_parts[1] -}}
+{% endif %}
