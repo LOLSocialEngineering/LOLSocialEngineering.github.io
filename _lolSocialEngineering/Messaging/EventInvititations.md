@@ -7,7 +7,7 @@ Techniques:
   - Technique: Credential Harvesting, Malware Delivery  via Fake Login Portal
     Description: The message impersonates well-known invitation platforms (like Evite or Paperless Post) and directs the user to a spoofed landing page. This page requires the victim to enter their email address and password to "view event details" or "RSVP."
     Usecase: Stealing email account credentials to facilitate further phishing campaigns or identity theft. Malware delivery via download to install remote acceess trojans.
-    Category: Messaging
+    Category: Phishing 
     MitreID: T1566.002
     Tags:
       - Messaging: Credential Harvesting
